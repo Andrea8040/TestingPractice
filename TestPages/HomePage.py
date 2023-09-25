@@ -11,6 +11,6 @@ class Test_course_pack(WebDriverSetup):
         self.driver.get(HomePageObject.get_base_url())
         home_object = HomePageObject(driver)
         time.sleep(3)
-        home_object.sign_up("daniel", "andrea8040@hotmail.com", "3135355651", "Calle 47f nro 85 a 25")
+        home_object.sign_up("daniel", "andrea8040@hotmail.com", "3135355651", "Calle 47f nro 85 a 25", "monday")
         #home_object.check_gender()
        # scroll.distance =1000
