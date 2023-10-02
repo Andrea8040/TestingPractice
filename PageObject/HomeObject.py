@@ -16,6 +16,7 @@ class HomePageObject:
         self.wikipedia_search = "Wikipedia1_wikipedia-search-input"
         self.search_button = "wikipedia-search-button"
         self.browser_windows_button = "//button[@onclick='myFunction()']"
+        self.gender = "female"
 
 
     def get_first_name(self):
@@ -39,6 +40,9 @@ class HomePageObject:
     def get_browser_windows(self):
         return self.driver.find_element(By.XPATH, self.browser_windows_button)
 
+    def get_gender(self):
+        return self.driver.find_element(By.id, self.gender)
+
      #   flag = driver.find_element(By.ID, self.form_address)
       #  driver.execute_script("arguments(0).scrollIntoView();",flag)
 
@@ -55,8 +59,9 @@ class HomePageObject:
         self.get_search_button().click()
         time.sleep(2)
         self.get_browser_windows().click()
-        #
-        self.driver.execute_script("windows.scrollTo(0,document.body.scrollHeight)")
+        time.sleep(5)
+        self.get_gender().click()
+        #self.driver.execute_script("windows.scrollTo(0,document.body.scrollHeight)")
 
     #def form_check(self):
      #   self.get_check_gender().click()
