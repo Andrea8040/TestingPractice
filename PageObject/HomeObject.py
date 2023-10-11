@@ -4,7 +4,6 @@ from selenium.webdriver.common.by import By
 
 base_url = "https://testautomationpractice.blogspot.com/"
 
-
 class HomePageObject:
 
     def __init__(self, driver):
@@ -16,6 +15,7 @@ class HomePageObject:
         self.wikipedia_search = "Wikipedia1_wikipedia-search-input"
         self.search_button = "wikipedia-search-button"
         self.browser_windows_button = "//button[@onclick='myFunction()']"
+        self.genderRadioButton = "male"
 
 
     def get_first_name(self):
@@ -39,6 +39,9 @@ class HomePageObject:
     def get_browser_windows(self):
         return self.driver.find_element(By.XPATH, self.browser_windows_button)
 
+    def get_gender_radio_button(self):
+        return self.driver.find_element(By.ID, self.genderRadioButton)
+
      #   flag = driver.find_element(By.ID, self.form_address)
       #  driver.execute_script("arguments(0).scrollIntoView();",flag)
 
@@ -54,12 +57,17 @@ class HomePageObject:
         self.get_wikipedia_search().send_keys(wikipedia_search)
         self.get_search_button().click()
         time.sleep(2)
-        self.get_browser_windows().click()
-        #
-        self.driver.execute_script("windows.scrollTo(0,document.body.scrollHeight)")
 
-    #def form_check(self):
-     #   self.get_check_gender().click()
+        # Click on Gender Radio Button
+        target_element = self.get_gender_radio_button()
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", target_element)
+        target_element.click()
+        
+        time.sleep(5)
+
+        self.get_browser_windows().click()
+        # def form_check(self):
+        # self.get_check_gender().click()
 
     @staticmethod
     def get_base_url():
